@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Contato</title>
+</head>
+<body>
+  <h2>Enviar Mensagem</h2>
+  <form id="formContato">
+    <label>Nome:</label><br>
+    <input type="text" name="nome" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Mensagem:</label><br>
+    <textarea name="mensagem" required></textarea><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+  <script src="../functions/verificaAcesso.js"></script>
+  <script>
+    verificarAcesso({ cargosPermitidos: ['admin'] });
+  </script>
+
+  <script>
+    const form = document.getElementById('formContato');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        nome: form.nome.value,
+        email: form.email.value,
+        mensagem: form.mensagem.value
+      };
+
+      try {
+        const res = await fetch('http://localhost:3000/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        alert(result.mensagem);
+      } catch (err) {
+        alert('Erro ao enviar e-mail.');
+        console.error(err);
+      }
+    });
+  </script>
+
+  <script src="../functions/verificaAcesso.js"></script>
+  <script>
+    verificarAcesso({ cargosPermitidos: ['admin'] });
+  </script>
+</body>
+</html>

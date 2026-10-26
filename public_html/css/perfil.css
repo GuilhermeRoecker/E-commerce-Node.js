@@ -1,0 +1,177 @@
+.endereco-card {
+  background-color: var(--bg-color-1);
+  border: 1px solid var(--bg-color-2);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease, background-color 0.3s;
+  color: var(--fg-color-1);
+}
+
+.endereco-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.endereco-info {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.endereco-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--fg-color-1);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-icon:hover {
+  background: var(--bg-color-2);
+  color: var(--fg-color-1);
+}
+
+.btn-edit:hover {
+  color: #2e7d32; 
+}
+
+.btn-delete:hover {
+  color: #c62828; 
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color-3); /* fundo escuro transparente */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+  transition: background-color 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-color-1); /* fundo modal */
+  color: var(--fg-color-1);       /* texto no modal */
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  height: auto;
+  max-width: 450px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: fadeInUp 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--fg-color-1);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+/* Form do modal */
+#form-endereco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+#form-endereco label {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+#form-endereco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+#form-endereco input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+
+/* Ações do modal */
+.modal-actions {
+  font-family: "Lexend", sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-actions .button-1 {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-actions .button-1:hover {
+  background-color: #f0f0f0;
+}
+
+:root {
+  --accent-color: #845ec2;
+  --success-color: #2e7d32;
+  --danger-color: #c62828;
+}
+
+body.dark-mode {
+  --accent-color: #a285f7;
+  --success-color: #6fbf73;
+  --danger-color: #ef5350;
+}
+
+.btn-edit:hover {
+  color: var(--success-color);
+}
+
+.btn-delete:hover {
+  color: var(--danger-color);
+}

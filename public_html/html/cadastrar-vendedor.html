@@ -1,0 +1,116 @@
+<!-- cadastrar-vendedor.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arôme - Cadastrar Vendedor</title>
+  <link rel="stylesheet" href="../css/inicio.css" />
+    <link rel="stylesheet" href="../css/cadastrar-vendedor.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/fontes.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+">
+
+</head>
+<body>
+  <div class="body">
+    <div id="header">
+      <h1 id="title">Arôme</h1>
+      <p id="texto-usuario">Cadastrar Vendedor</p>
+      <i class="fa-solid fa-user fa-2xl user"></i>
+
+        <button id="mudar-tema" class="button-1 rounded" title="Mudar tema">
+        <i class="fa-solid fa-sun"></i>
+        </button>
+
+      <button id="btn-voltar" class="button-1 rounded" onclick="location.href='/html/inicio.html'">&lt; Voltar</button>
+    </div>
+
+    <div id="sub-header">
+      <h2>Vendedores</h2>
+      <div id="fill"></div>
+      <button id="btn-novo-vendedor" class="button-1 rounded">+ Novo Vendedor</button>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalNovoVendedor">
+    <div class="modal-content rounded">
+      <h3>Novo Vendedor</h3>
+      <form id="form-vendedor" class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome completo</label>
+          <input class="form-input" type="text" id="nome" name="nomeCompleto" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="nomeUsuario">Nome de usuário</label>
+          <input class="form-input" type="text" id="nomeUsuario" name="nomeUsuario" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail</label>
+          <input class="form-input" type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cpf">CPF</label>
+          <input class="form-input" type="text" id="cpf" name="CPF" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="dataNascimento">Data de nascimento</label>
+          <input class="form-input" type="date" id="dataNascimento" name="dataNascimento" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="telefone">Telefone</label>
+          <input class="form-input" type="text" id="telefone" name="telefone" />
+        </div>
+          <div class="form-group">
+            <label class="form-label" for="celular">Celular</label>
+            <input class="form-input" type="text" id="celular" name="celular" />
+          </div>
+        <div class="form-group">
+          <label class="form-label" for="senha">Senha</label>
+          <input class="form-input" type="password" id="senha" name="senhaHash" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cargo">Cargo</label>
+          <select class="form-input" id="cargo" name="cargo" required>
+            <option value="vendedor">Vendedor</option>
+            <option value="admin">Admin</option>
+            <option value="dono-loja">Dono de Loja</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="empresa">Empresa</label>
+          <select class="form-input" id="empresa" name="empresaId" required></select>
+        </div>
+        <div class="modal-actions">
+          <button type="reset" class="btn btn-outline">Limpar</button>
+          <button type="submit" class="btn btn-secondary">Salvar</button>
+        </div>
+      </form>
+      <button class="modal-btn modal-btn-close" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+    <script src="../js/toast.js"></script>
+    <script src="../js/mudarTema.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="../functions/verificaAcesso.js"></script>
+    <script>
+      verificarAcesso({ cargosPermitidos: ['admin', 'dono-loja'] });
+    </script>
+    <script src="../js/cadastrar-vendedor.js"></script>
+</body>
+</html>

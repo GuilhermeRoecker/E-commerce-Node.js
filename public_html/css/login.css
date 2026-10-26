@@ -1,0 +1,184 @@
+/*:root {
+    --bg-color-1: #ffffff;
+    --bg-color-2: #e0e0e0;
+    --bg-color-3: rgba(0, 0, 0, 0.5);
+    --fg-color-1: #333333;
+}*/
+
+body.dark-mode {
+    --bg-color-1: #121212;
+    --bg-color-2: #2c2c2c;
+    --bg-color-3: rgba(255, 255, 255, 0.1);
+    --fg-color-1: #f0f0f0;
+}
+
+
+
+body {
+    margin: 0;
+    background-color: var(--fg-color-1);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(var(--fg-color-2) 50%, var(--fg-color-1) 100%), url("../resouces/bg_blobbubble_3.png"), url("../resouces/bg_blobbubble_3_flip.png");
+    background-size: auto, auto, auto;
+    background-blend-mode: darken, lighten;
+    background-size: auto, 1024px 1024px, 1000px 800px;
+    backdrop-filter: blur(5px);
+    animation: bgpomo 16s infinite linear;
+}
+
+@keyframes bgpomo {
+    0% {
+    background-position: 0 0, 100px 0px, 0px 0px;
+    }
+    100% {
+        background-position: 0 0, 1124px -1024px, 0px 800px;
+    }
+}
+
+
+#login-model {
+  font-family: Lexend, sans-serif;
+  background-color: var(--bg-color-1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  width: 500px; /* mantém a largura */
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+#login-model h1 {
+  color: var(--fg-color-2);
+  margin-bottom: 0.2rem;
+  font-weight: 700;
+}
+
+#login-model p {
+  color: var(--bg-color-3);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+#login-model img {
+    max-width: 20rem;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--bg-color-2);
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--fg-color-2);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+
+.tab:hover {
+  color: var(--bg-color-3);
+}
+
+.tab.active {
+  border-bottom-color: #4285f4; /* azul do active */
+  color: #4285f4;
+  font-weight: 700;
+}
+
+.tab-content {
+  position: relative;
+  width: 100%;
+  min-height: 230px; 
+  overflow: hidden;
+}
+
+.tab-panel {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%; 
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 0 0 10px 10px;
+  opacity: 0;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;   
+
+  transition: opacity 0.3s ease;
+}
+
+.tab-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--bg-color-2);
+  font-size: 1rem;
+  color: var(--fg-color-2);
+  background-color: var(--bg-color-1);
+  box-sizing: border-box;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 5px #4285f4;
+}
+
+.button-2 {
+  width: 100%;
+  padding: 10px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.button-2:hover {
+  background-color: #3367d6;
+}
+
+#mudar-tema {
+  width: 75%;
+  padding: 10px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}

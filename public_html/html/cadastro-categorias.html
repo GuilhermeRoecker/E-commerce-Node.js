@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arôme - Cadastro de Categorias</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/inicio.css" />
+    <link rel="stylesheet" href="../css/cadastro-categorias.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/fontes.css" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Stalinist+One&display=swap" rel="stylesheet" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+">
+
+</head>
+<body>
+  <div class="body">
+    <div id="header">
+      <h1 id="title">Arôme</h1>
+      <p id="texto-usuario">Olá, administrador</p>
+      <i class="fa-solid fa-user fa-2xl user"></i>
+
+      <button id="mudar-tema" class="button-1 rounded" title="Mudar tema">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+
+      <button id="btn-login-cadastro" class="button-1 rounded" style="display:none;">
+        Login / Cadastro
+      </button>
+
+      <button id="btn-voltar" class="button-1 rounded" title="Voltar">&lt; Voltar</button>
+    </div>
+
+    <div id="sub-header" style="display: flex; justify-content: space-between; align-items: center; padding: 0 2rem;">
+      <h2>Categorias</h2>
+      <button class="btn-nova-categoria" id="btn-nova-categoria">+ Nova Categoria</button>
+    </div>
+
+    <div id="content">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para cadastro/edição de categoria -->
+  <div class="modal-overlay" id="modal-categoria" aria-hidden="true" role="dialog" aria-labelledby="modal-categoria-title">
+    <div class="modal-content rounded" role="document">
+      <button class="close-btn" id="btn-fechar-modal" aria-label="Fechar">&times;</button>
+      <h2 id="modal-categoria-title">Nova Categoria</h2>
+
+      <form id="form-categoria">
+        <div class="form-group">
+          <label for="nomeCategoria" class="form-label">Nome da Categoria</label>
+          <input type="text" id="nomeCategoria" name="nomeCategoria" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="descricaoCategoria" class="form-label">Descrição</label>
+          <textarea id="descricaoCategoria" name="descricaoCategoria" class="form-textarea"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn-salvar" id="btn-salvar">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+    <script src="../js/toast.js"></script>
+    <script src="../js/mudarTema.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="../functions/verificaAcesso.js"></script>
+    <script>
+      verificarAcesso({ cargosPermitidos: ['admin']});
+    </script>
+    <script src="../js/cadastro-categorias.js"></script>
+</body>
+</html>

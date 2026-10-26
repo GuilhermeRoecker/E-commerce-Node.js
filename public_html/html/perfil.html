@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arôme - Meu Perfil</title>
+  <link rel="stylesheet" href="../css/inicio.css" />
+  <link rel="stylesheet" href="../css/perfil.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/fontes.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+">
+</head>
+<body>
+  <div class="body">
+    <div id="header">
+      <h1 id="title">Perfil</h1>
+      <button id="mudar-tema" class="button-1 rounded" title="Mudar tema">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <button id="btn-voltar" class="button-1 rounded">&lt; Voltar</button>
+    </div>
+
+    <div id="sub-header">
+      <h2>Meu Perfil</h2>
+    </div>
+
+    <div id="content" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 300px">
+        <h3>Dados Pessoais</h3>
+        <form id="form-perfil" class="form">
+          <div class="form-group">
+            <label class="form-label">Nome completo</label>
+            <input type="text" class="form-input" name="nomeCompleto" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" name="email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Telefone</label>
+            <input type="text" class="form-input" name="telefone" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Celular</label>
+            <input type="text" class="form-input" name="celular" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nova Senha</label>
+            <input type="password" class="form-input" name="novaSenha" placeholder="Deixe em branco para manter" />
+          </div>
+
+          <button type="submit" class="btn btn-secondary">Salvar alterações</button>
+        </form>
+      </div>
+
+      <div style="flex: 1; min-width: 300px">
+        <h3>Endereços</h3>
+        <div id="enderecos-lista"></div>
+        <button id="btn-adicionar-endereco" class="btn btn-outline" style="margin-top: 1rem;">
+          <i class="fa-solid fa-plus"></i> Novo Endereço
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Novo Endereço -->
+  <div class="modal-overlay modal" id="modal-endereco" aria-hidden="true">
+    <div class="modal-content rounded" style="max-width: 400px; width: 90vw; padding: 1.5rem 2rem">
+      <button class="close-btn" id="fechar-modal-endereco" style="position: absolute; top: 10px; right: 10px">&times;</button>
+      <h2>Novo Endereço</h2>
+      <form id="form-endereco">
+        <label>Rua</label>
+        <input type="text" name="rua" required />
+        <label>Número</label>
+        <input type="text" name="numero" required />
+        <label>Complemento</label>
+        <input type="text" name="complemento" />
+        <label>Cidade</label>
+        <input type="text" name="cidade" required />
+        <label>Estado</label>
+        <input type="text" name="estado" required />
+        <label>CEP</label>
+        <input type="text" name="CEP" required />
+
+        <div class="modal-actions" style="margin-top: 1.5rem; text-align: right">
+          <button type="button" id="cancelar-endereco" class="button-1 rounded">Cancelar</button>
+          <button type="submit" class="button-1 rounded">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script src="../js/toast.js"></script>
+  <script src="../js/mudarTema.js"></script>
+  <script src="../functions/verificaAcesso.js"></script>
+  <script>
+    verificarAcesso({ cargosPermitidos: ['admin', 'dono-loja', 'vendedor', 'cliente'] });
+  </script>
+  <script src="../js/perfil.js"></script>
+</body>
+</html>

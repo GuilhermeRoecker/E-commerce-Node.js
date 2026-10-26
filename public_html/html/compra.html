@@ -1,0 +1,109 @@
+<!--
+Os botões de compra ja mandam para uma compras um link com o id do produto ou carrinho no link como parametro,
+Ex: http://localhost:3000/html/compra.html?produtoId=11
+Ex: http://localhost:3000/html/compra.html?carrinhoId=1
+
+Aqui basta puxar o produto ou carrinho do banco de dados e exibir os detalhes para o usuário.
+ mandar ele escolher o endereço de entrega (se ele nao tiver colocar botão com modal para cadastrar),
+  forma de pagamento(debito, credito, dinheiro ou pix, só opções para ele selecionar e salvar na tabela de pagamento)
+   e finalizar a compra (salvando na tabela de pedidos e itens pedido e retirando o estoque dos produtos).
+
+   Adicional 
+    se conseguir inserir campo para usar cupom de desconto,
+     e aplicar o desconto no total da compra).
+      Tabelas são cupom e usuario cupom. Cupons são cadastradsos pela administração ou loja(dono e vendedor)
+       Ou ganho de cupom de uso unico ao se cadastrar.
+
+        Após finalizar a compra, redirecionar para a página de perfil do usuário,
+         onde ele pode ver os pedidos feitos e detalhes dos mesmos. (Não sei se vou fazer)
+          E colocar na tabela rasteio o status do pedido, como pendente.
+           Que depois ira rodar uma cron enviando os status dos pedidos para o email do usuário,
+            pendente, em separação, expedição, enviado a trasportadora, em circulação, rota de entrega e entregue.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Arôme - Carrinho de Compras</title>
+    <link rel="stylesheet" href="../css/compra.css" />
+    <link rel="stylesheet" href="../css/inicio.css" />
+    <link rel="stylesheet" href="../css/componentes.css" />
+    <link rel="stylesheet" href="../css/fontes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Stalinist+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+">
+
+  </head>
+  <body>
+    <div id="header">
+      <h1 id="title">Aromê</h1>
+      <p>Olá, usuário</p>
+
+      <i class="fa-solid fa-user fa-2xl user"></i>
+      <button id="mudar-tema" class="button-1 rounded">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <button class="button-1 rounded" id="btn-voltar">Voltar</button>
+    </div>
+    <div id="carrinho">
+      <h1 style="text-align: center">Resumo de compra</h1>
+      <h2>Itens</h2>
+      <ul id="lista-carrinho"></ul>
+      <h2>Valor total da compra</h2>
+      <h1 id="vlr">R$ 0,00</h1>
+      <h2>Endereço de entrega</h2>
+      <select id="enderecos-entrega" name="enderecoId" class="button-1 rounded"></select>
+      <div id="sem-enderecos" style="display: none; margin-top: 1rem">
+        <p>Nenhum endereço cadastrado.</p>
+        <button id="btn-cadastrar-endereco" class="button-1 rounded">
+          Cadastrar Endereço
+        </button>
+      </div>
+
+        <h2>Método de pagamento</h2>
+        <select id="forma-pagamento" name="Pagamento" class="button-1 rounded">
+        <option value="pix">Pix</option>
+        <option value="boleto">Boleto</option>
+        <option value="cartao">Cartão de crédito</option>
+        </select>
+      <button
+        id="btn-concluir"
+        class="button-1 rounded"
+        style="margin-top: 2rem; width: 100%"
+      >
+        Concluir Compra
+      </button>
+    </div>
+    <script src="../js/compra/auth.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/mudarTema.js"></script>
+    <script src="../functions/verificaAcesso.js"></script>
+    <script>
+        verificarAcesso({ cargosPermitidos: ['admin', 'dono-loja', 'vendedor', 'cliente'] });
+    </script>
+    <script src="../js/inicio/produtos.js"></script>
+    <script src="../js/compra/pegaProduto.js"></script>
+    <script src="../js/compra/pegaEndereco.js"></script>
+    <script src="../js/compra/efetuaCompra.js"></script>
+  </body>
+</html>
+
+

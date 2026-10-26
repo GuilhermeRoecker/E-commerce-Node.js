@@ -1,0 +1,96 @@
+/* Variaveis */
+
+:root {
+    /* Cores */
+    --fg-color-1: #6366f1;
+    --fg-color-2: #d65db1;
+    --fg-color-3: #ff7417;
+    --bg-color-1: #ffffff;
+    --bg-color-2: #e4e4e4;
+    --bg-color-3: rgba(0, 0, 0, 0.4);
+    --bg-color-4: #bfbfbf;
+    --btn-color-true-1: #36944f;
+    --btn-color-true-2: #76a02d;
+    --btn-color-false-1: #a7000a;
+    --btn-color-false-2: #ed2939;
+}
+
+.shadow {
+    box-shadow: 5px 5px 10px var(--bg-color-3);
+}
+
+.transparent {
+    backdrop-filter: blur(10px);
+}
+
+.rounded {
+    border-radius: 1rem;
+}
+
+.padding {
+    padding: 1rem;
+}
+
+.text-input {
+    font-family: Lexend;
+    border: none;
+    background-color: var(--bg-color-2);
+    height: 2rem;
+}
+
+.button {
+    font-family: Lexend;
+    height: 2rem;
+    width: 100%;
+    background-color: var(--fg-color-3);
+    color: var(--bg-color-1);
+    border: none;
+}
+
+.button-1 {
+    font-family: Lexend;
+    height: 2rem;
+    width: 100%;
+    background-color: var(--bg-color-1);
+    color: var(--fg-color-1);
+    border: solid 1px var(--fg-color-1);
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.button-1:hover {
+    color: var(--bg-color-1);
+    background-color: var(--fg-color-2);
+    border: solid 1px var(--fg-color-2);
+}
+
+.button-2 {
+    font-family: Lexend;
+    height: 2rem;
+    width: 100%;
+    background-color: var(--fg-color-1);
+    color: var(--bg-color-1);
+    border: solid 1px var(--bg-color-1);
+    transition: 0.3s;
+}
+
+.button-2:hover {
+    background-color: var(--fg-color-2);
+    border: solid 1px var(--fg-color-2);
+}
+
+.toast-content {
+    font-family: Lexend;
+}
+
+.user {
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.user:hover {
+  transform: scale(1.1);
+  color: #0eff96; /* ou qualquer cor de destaque que combine com seu tema */
+}

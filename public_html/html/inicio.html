@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arôme - Produtos</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/inicio.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/fontes.css" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Stalinist+One&display=swap" rel="stylesheet" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+">
+</head>
+<body>
+  <div class="body">
+    <div id="header">
+      <h1 id="title">Arôme</h1>
+      <p id="texto-usuario">Olá, visitante</p>
+      <i class="fa-solid fa-user fa-2xl user"></i>
+
+      <button id="mudar-tema" class="button-1 rounded" title="Mudar tema">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+
+      <button id="btn-login-cadastro" class="button-1 rounded">
+        Login / Cadastro
+      </button>
+
+      <button id="btn-menu" class="button-1 rounded" title="Menu">☰ Menu</button>
+    </div>
+
+    <div id="sub-header">
+      <h2>Produtos</h2>
+      <div id="fill"></div>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+  <!-- Modal Menu -->
+  <div class="modal-overlay" id="modalMenu">
+    <div class="modal-content rounded">
+      <h3>Menu</h3>
+
+      <button id="btn-carrinho" class="button-1 rounded modal-btn" style="display:none;">
+        <i class="fa-solid fa-cart-shopping"></i> Carrinho
+      </button>
+
+      <button id="btn-cadastrar-empresa" class="button-1 rounded modal-btn" style="display:none;">
+        <i class="fa-solid fa-building"></i> Cadastrar empresa
+      </button>
+
+      <button id="btn-cadastrar-categorias" class="button-1 rounded modal-btn" style="display:none;">
+        <i class="fa-solid fa-table-list"></i> Cadastrar categorias
+      </button>
+
+      <button id="btn-cadastrar-produto" class="button-1 rounded modal-btn" style="display:none;">
+        <i class="fa-solid fa-plus"></i> Cadastrar Produto
+      </button>
+
+      <button id="btn-cadastrar-vendedor" class="button-1 rounded modal-btn" style="display:none;">
+        <i class="fa-solid fa-user-plus"></i> Cadastrar Vendedor
+      </button>
+
+      <button id="btn-sair" class="button-1 rounded modal-btn" style="display:none;" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> Sair
+      </button>
+
+      <button id="btn-fechar-modal" class="modal-btn modal-btn-close">
+        Fechar
+      </button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="/js/inicio/auth.js"></script>
+  <script src="/js/inicio/interface.js"></script>
+  <script src="/js/inicio/modal.js"></script>
+  <script src="/js/inicio/produtos.js"></script>
+  <script src="/js/inicio/imagens.js"></script>
+  <script src="/js/inicio/carrinho.js"></script>
+  <script src="/js/inicio/categorias.js"></script>
+  <script src="/js/inicio/redirect.js"></script>
+  <script src="/js/inicio/main.js"></script>
+  <script src="../js/mudarTema.js"></script>
+</body>
+</html>

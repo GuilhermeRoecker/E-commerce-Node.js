@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arôme - Cadastro de empresas</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/cadastro-empresas.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/fontes.css" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Stalinist+One&display=swap" rel="stylesheet" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data: blob:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+">
+
+</head>
+<body>
+  <div class="body">
+    <div id="header">
+      <h1 id="title">Arôme</h1>
+      <p id="texto-usuario">Olá, administrador</p>
+      <i class="fa-solid fa-user fa-2xl user"></i>
+
+      <button id="mudar-tema" class="button-1 rounded" title="Mudar tema">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+
+      <button id="btn-login-cadastro" class="button-1 rounded" style="display:none;">
+        Login / Cadastro
+      </button>
+
+    <button id="btn-voltar" class="button-1 rounded" title="Voltar">&lt; Voltar</button>
+    </div>
+
+    <div id="sub-header" style="display:flex; align-items:center; justify-content:space-between;">
+      <h2>Empresas</h2>
+      <button id="btn-nova-empresa" class="button-1 rounded">
+        <i class="fa-solid fa-plus"></i> Nova Empresa
+      </button>
+    </div>
+
+    <div id="content">
+      <ul id="lista-empresas" style="list-style:none; padding:0; margin:0;"></ul>
+    </div>
+  </div>
+
+  <!-- Modal Novo/Editar -->
+  <div class="modal-overlay modal" id="modal-empresa" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content rounded" style="max-width:400px; width:90vw; padding:1.5rem 2rem;">
+      <button class="close-btn" id="btn-fechar-modal" aria-label="Fechar" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+      <h2 id="modal-title">Nova Empresa</h2>
+      <form id="form-empresa">
+<!-- Campos da empresa -->
+
+<label for="razaoSocial">Razão Social</label>
+<input type="text" id="razaoSocial" name="razaoSocial" required />
+
+<label for="nomeFantasia">Nome Fantasia</label>
+<input type="text" id="nomeFantasia" name="nomeFantasia" required />
+
+<label for="inscricaoEstadual">Inscrição Estadual</label>
+<input type="text" id="inscricaoEstadual" name="inscricaoEstadual" />
+
+<label for="site">Site</label>
+<input type="url" id="site" name="site" placeholder="https://exemplo.com" />
+
+<label for="rua">Rua</label>
+<input type="text" name="rua" />
+
+<label for="numero">Numero</label>
+<input type="text" name="numero" />
+
+<label for="complemento">Complemento</label>
+<input type="text" name="complemento" />
+
+<label for="cidade">Cidade</label>
+<input type="text" name="cidade" />
+
+<label for="estado">Estado</label>
+<input type="text" name="estado" />
+
+<label for="cep">CEP</label>
+<input type="text" name="cep" />
+
+
+        <div class="modal-actions" style="margin-top:1.5rem; text-align:right;">
+          <button type="button" id="btn-cancelar" class="button-1 rounded">Cancelar</button>
+          <button type="submit" id="btn-salvar" class="button-1 rounded">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/toast.js"></script>
+  <script src="../js/mudarTema.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+  <script src="../functions/verificaAcesso.js"></script>
+  <script>
+    verificarAcesso({ cargosPermitidos: ['admin'] });
+  </script>
+  <script src="../js/cadastro-empresas.js"></script>
+</body>
+</html>

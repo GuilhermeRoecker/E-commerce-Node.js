@@ -1,0 +1,187 @@
+/* Definição das variáveis para tema claro */
+:root {
+  --bg-container: #fff;
+  --text-titulo: #333;
+  --border-titulo: #4a90e2;
+  --text-tabela: #444;
+  --bg-thead: #4a90e2;
+  --text-thead: #fff;
+  --border-tabela: #ddd;
+  --bg-linha-alternada: #f9f9f9;
+  --btn-editar-color: #2a8fbd;
+  --btn-editar-hover: #d0e9ff;
+  --btn-deletar-color: #d94f4f;
+  --btn-deletar-hover: #ffdede;
+  --border-responsivo: #ccc;
+  --text-responsivo: #555;
+  --border-responsivo-bottom: #eee;
+}
+
+/* Variáveis para tema escuro */
+body.dark {
+  --bg-container: #222;
+  --text-titulo: #eee;
+  --border-titulo: #3a75c4;
+  --text-tabela: #ccc;
+  --bg-thead: #3a75c4;
+  --text-thead: #fff;
+  --border-tabela: #555;
+  --bg-linha-alternada: #333;
+  --btn-editar-color: #69a8dc;
+  --btn-editar-hover: #2a4669;
+  --btn-deletar-color: #e06666;
+  --btn-deletar-hover: #6b2a2a;
+  --border-responsivo: #444;
+  --text-responsivo: #bbb;
+  --border-responsivo-bottom: #444;
+}
+
+.modal-content {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--bg-color-1);
+  padding: 1.5rem;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* Container das empresas */
+.empresa-container {
+  background: var(--bg-container);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.empresa-container h3 {
+  margin-top: 0;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text-titulo);
+  border-bottom: 2px solid var(--border-titulo);
+  padding-bottom: 8px;
+}
+
+/* Tabela */
+.empresa-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.empresa-container th,
+.empresa-container td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-tabela);
+  font-size: 0.95rem;
+  color: var(--text-tabela);
+}
+
+/* Cabeçalho */
+.empresa-container thead th {
+  background-color: var(--bg-thead);
+  color: var(--text-thead);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Linhas alternadas */
+.empresa-container tbody tr:nth-child(even) {
+  background-color: var(--bg-linha-alternada);
+}
+
+/* Botões */
+.empresa-container button.btn-editar,
+.empresa-container button.btn-deletar {
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.empresa-container button.btn-editar {
+  color: var(--btn-editar-color);
+}
+.empresa-container button.btn-editar:hover {
+  background-color: var(--btn-editar-hover);
+}
+
+.empresa-container button.btn-deletar {
+  color: var(--btn-deletar-color);
+}
+.empresa-container button.btn-deletar:hover {
+  background-color: var(--btn-deletar-hover);
+}
+
+/* Responsividade básica */
+@media (max-width: 600px) {
+  .empresa-container table,
+  .empresa-container thead,
+  .empresa-container tbody,
+  .empresa-container th,
+  .empresa-container td,
+  .empresa-container tr {
+    display: block;
+    width: 100%;
+  }
+
+  .empresa-container thead tr {
+    display: none;
+  }
+
+  .empresa-container tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-responsivo);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .empresa-container tbody td {
+    padding-left: 50%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid var(--border-responsivo-bottom);
+    text-align: right;
+    font-size: 0.9rem;
+  }
+
+  .empresa-container tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-left: 5px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-responsivo);
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 100vw;
+    right: -100vw;
+  }
+
+  .modal-overlay.active .modal-content {
+    right: 0;
+  }
+}
